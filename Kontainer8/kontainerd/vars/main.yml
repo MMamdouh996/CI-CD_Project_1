@@ -1,0 +1,27 @@
+---
+kernel_modules:
+- overlay
+- br_netfilter
+
+kernel_parameters_list:
+- net.ipv4.ip_forward
+- net.bridge.bridge-nf-call-iptables
+- net.bridge.bridge-nf-call-ip6tables
+
+dependencies:
+- apt-transport-https
+- bash-completion
+- curl
+- jq
+- sshpass 
+
+k8s_dependencies:
+- kubectl
+- kubelet
+- kubeadm
+
+podman_repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_{{ version_id }}/ /"
+podman_key: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_{{ version_id }}/Release.key"
+
+containerd_version: 1.6.5
+runc_version: 1.1.3
